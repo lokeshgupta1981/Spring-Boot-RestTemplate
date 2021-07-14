@@ -1,23 +1,46 @@
-# Compiled class file
+tomcat
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
 *.class
 
-# Log file
-*.log
+# Maven 
+target/
 
-# BlueJ files
-*.ctxt
+# eclipse project file
+.settings/
+.classpath
+.project
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# OS
+.DS_Store
 
-# Package Files #
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
+spring-demo-webapp/.mvn/wrapper/maven-wrapper.jar
+spring-demo-webapp/.mvn/wrapper/maven-wrapper.properties
+spring-demo-webapp/.mvn/wrapper/MavenWrapperDownloader.java
+spring-demo-webapp/mvnw
+spring-demo-webapp/mvnw.cmd
+spring-demo-webapp/.mvn/wrapper/maven-wrapper.jar
+spring-resttemplate-client-app/.mvn/wrapper/maven-wrapper.jar
+spring-resttemplate-client-app/.mvn/wrapper/maven-wrapper.properties
+spring-resttemplate-client-app/.mvn/wrapper/MavenWrapperDownloader.java
+spring-resttemplate-client-app/mvnw
+spring-resttemplate-client-app/mvnw.cmd
 *.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+spring-demo-webapp/HELP.md
+spring-resttemplate-client-app/.mvn/wrapper/maven-wrapper.jar
