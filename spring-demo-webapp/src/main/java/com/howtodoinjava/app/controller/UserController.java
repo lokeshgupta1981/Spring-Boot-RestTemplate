@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.howtodoinjava.app.exception.RecordNotFoundException;
+import com.howtodoinjava.app.exception.ServerException;
 import com.howtodoinjava.app.model.User;
 import com.howtodoinjava.app.service.UserService;
 
@@ -22,27 +26,47 @@ public class UserController {
 	UserService userService;
 
 	@GetMapping("users")
-	public List<User> getAll() {
-		return userService.getAll();
+	public ResponseEntity<List<User>> getAll() {
+		return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 	}
 
 	@GetMapping("users/{id}")
-	public Optional<User> getById(@PathVariable long id) {
-		return userService.getById(id);
+	public ResponseEntity<User> getById(@PathVariable long id) {
+		Optional<User> user = userService.getById(id);
+		if (user.isPresent()) {
+			return new ResponseEntity<>(user.get(), HttpStatus.OK);
+		} else {
+			throw new RecordNotFoundException();
+		}
 	}
 
 	@PostMapping("users")
-	public User createUser(@RequestBody User newUser) {
-		return userService.save(newUser);
+	public ResponseEntity<User> create(@RequestBody User newUser) {
+		User user = userService.save(newUser);
+		if (user == null) {
+			throw new ServerException();
+		} else {
+			return new ResponseEntity<>(user, HttpStatus.CREATED);
+		}
 	}
 
 	@PutMapping("users/{id}")
-	public User update(@RequestBody User updatedUser) {
-		return userService.save(updatedUser);
+	public ResponseEntity<User> update(@RequestBody User updatedUser) {
+		User user = userService.save(updatedUser);
+		if (user == null) {
+			throw new ServerException();
+		} else {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}
 	}
 
 	@DeleteMapping("users/{id}")
-	public void update(@PathVariable long id) {
-		userService.delete(id);
+	public HttpStatus delete(@PathVariable long id) {
+		try {
+			userService.delete(id);
+			return HttpStatus.OK;
+		} catch (Exception e) {
+			throw new RecordNotFoundException();
+		}
 	}
 }
