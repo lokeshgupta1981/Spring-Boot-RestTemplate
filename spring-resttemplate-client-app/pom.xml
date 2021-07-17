@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.howtodoinjava</groupId>
-	<artifactId>spring-resttemplate-client-app</artifactId>
+	<artifactId>spring-resttemplate-client-app</artifactId> 
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-resttemplate-client-app</name>
 	<description>Demo project for Spring Boot</description>

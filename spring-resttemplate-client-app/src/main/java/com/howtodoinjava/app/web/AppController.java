@@ -41,8 +41,8 @@ public class AppController {
 
 	@GetMapping("all-users_v1/{id}")
 	public ResponseEntity<User> getById_v1(@PathVariable
-	long id) {
-		Map<String, String> params = new HashMap<String, String>();
+	final long id) {
+		Map<String, String> params = new HashMap<>();
 		params.put("id", "1");
 
 		User user = restTemplate.getForObject(URI_USERS_ID, User.class, params);
@@ -58,8 +58,8 @@ public class AppController {
 
 	@GetMapping("all-users_v2/{id}")
 	public ResponseEntity<User> getById_v2(@PathVariable
-	long id) {
-		Map<String, String> params = new HashMap<String, String>();
+	final long id) {
+		Map<String, String> params = new HashMap<>();
 		params.put("id", "1");
 
 		ResponseEntity<User> responseEntity = restTemplate.getForEntity(URI_USERS_ID, User.class, params);
@@ -80,7 +80,7 @@ public class AppController {
 
 	@GetMapping("all-users_v3/{id}")
 	public ResponseEntity<User> getById_v3(@PathVariable
-	long id) {
+	final long id) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		headers.set("X-HEADER_NAME", "XYZ");
@@ -94,7 +94,7 @@ public class AppController {
 
 	@PostMapping("users")
 	public User create(@RequestBody
-	User newUser) {
+	final User newUser) {
 		User createdUser = restTemplate.postForObject(URI_USERS, newUser, User.class);
 		return createdUser;
 	}

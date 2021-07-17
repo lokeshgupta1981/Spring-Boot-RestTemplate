@@ -32,43 +32,47 @@ public class UserController {
 	}
 
 	@GetMapping("users/{id}")
-	public ResponseEntity<User> getById(@PathVariable long id) {
+	public ResponseEntity<User> getById(@PathVariable final long id) {
 		Optional<User> user = userService.getById(id);
 		if (user.isPresent()) {
 			return new ResponseEntity<>(user.get(), HttpStatus.OK);
-		} else {
+		}
+		else {
 			throw new RecordNotFoundException();
 		}
 	}
 
-	@PostMapping(path = "users", 
-			consumes = MediaType.APPLICATION_JSON_VALUE, 
+	@PostMapping(path = "users",
+			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> create(@RequestBody User newUser) {
+	public ResponseEntity<User> create(@RequestBody final User newUser) {
 		User user = userService.save(newUser);
 		if (user == null) {
 			throw new ServerException();
-		} else {
+		}
+		else {
 			return new ResponseEntity<>(user, HttpStatus.CREATED);
 		}
 	}
 
 	@PutMapping("users/{id}")
-	public ResponseEntity<User> update(@RequestBody User updatedUser) {
+	public ResponseEntity<User> update(@RequestBody final User updatedUser) {
 		User user = userService.save(updatedUser);
 		if (user == null) {
 			throw new ServerException();
-		} else {
+		}
+		else {
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
 	}
 
 	@DeleteMapping("users/{id}")
-	public HttpStatus delete(@PathVariable long id) {
+	public HttpStatus delete(@PathVariable final long id) {
 		try {
 			userService.delete(id);
 			return HttpStatus.OK;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new RecordNotFoundException();
 		}
 	}

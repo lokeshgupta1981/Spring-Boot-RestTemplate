@@ -38,7 +38,7 @@ public class User implements Serializable {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(final long id) {
 		this.id = id;
 	}
 
@@ -46,7 +46,7 @@ public class User implements Serializable {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(final String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -54,7 +54,7 @@ public class User implements Serializable {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(final String lastName) {
 		this.lastName = lastName;
 	}
 
@@ -62,7 +62,7 @@ public class User implements Serializable {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
@@ -70,14 +70,14 @@ public class User implements Serializable {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
+	public void setDateOfBirth(final LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", "
-				+ "lastName=" + lastName + ", email=" + email + ", dateOfBirth="
-				+ dateOfBirth + "]";
+				+ "lastName=" + lastName + ", email=" + email
+				+ ", dateOfBirth=" + dateOfBirth + "]";
 	}
 }
