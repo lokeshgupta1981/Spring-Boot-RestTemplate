@@ -19,20 +19,14 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "first_name")
-	private String firstName;
-
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "name")
+	private String name;
 
 	@Column(name = "email")
 	private String email;
-
-	@Column(name = "date_of_birth")
-	private LocalDate dateOfBirth;
 
 	public long getId() {
 		return id;
@@ -42,20 +36,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(final String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(final String lastName) {
-		this.lastName = lastName;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -66,18 +52,8 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(final LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", "
-				+ "lastName=" + lastName + ", email=" + email
-				+ ", dateOfBirth=" + dateOfBirth + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
 }
