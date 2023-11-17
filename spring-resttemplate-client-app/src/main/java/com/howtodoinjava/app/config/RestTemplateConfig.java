@@ -11,6 +11,8 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
+import com.howtodoinjava.app.interceptor.GzipRequestInterceptor;
+
 @Configuration
 @PropertySource("classpath:application.properties")
 public class RestTemplateConfig {
@@ -25,6 +27,8 @@ public class RestTemplateConfig {
 	public RestTemplate restTemplate() {
 		RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
 		restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory(apiHost));
+		// 增加执行压缩的拦截器
+		restTemplate.getInterceptors().add(new GzipRequestInterceptor());
 		return restTemplate;
 	}
 

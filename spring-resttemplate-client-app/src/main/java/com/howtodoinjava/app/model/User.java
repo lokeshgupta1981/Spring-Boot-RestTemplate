@@ -1,17 +1,14 @@
 package com.howtodoinjava.app.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private long id;
-	private String firstName;
-	private String lastName;
+	private String name;
 	private String email;
-	private LocalDate dateOfBirth;
 
 	public long getId() {
 		return id;
@@ -21,20 +18,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(final String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(final String lastName) {
-		this.lastName = lastName;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -45,17 +34,8 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(final LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", " + "lastName=" + lastName + ", email=" + email
-				+ ", dateOfBirth=" + dateOfBirth + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
 }
